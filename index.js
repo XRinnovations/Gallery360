@@ -4,17 +4,15 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
+  asset
 } from 'react-360';
 
 export default class Gallery360 extends React.Component {
   render() {
     return (
       <View style={styles.panel}>
-        <View style={styles.greetingBox}>
-          <Text style={styles.greeting}>
-            Welcome to React 360
-          </Text>
-        </View>
+          <Image source = {asset('HotAirBalloon.jpg')} style={styles.panel}/>
       </View>
     );
   }
