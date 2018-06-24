@@ -12,7 +12,7 @@ export default class Gallery360 extends React.Component {
   render() {
     return (
       <View style={styles.panel}>
-          <Image source = {asset('HotAirBalloon.jpg')} style={styles.panel}/>
+          <Image source = {asset('AI_Guy.jpg')} style={styles.panel}/>
       </View>
     );
   }
