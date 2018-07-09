@@ -5,14 +5,29 @@ import {
   Text,
   View,
   Image,
-  asset
+  asset,
+  Environment,
+  VrButton,
+  console,
 } from 'react-360';
 
+Environment.setBackgroundImage(asset('Renascent2.jpg'), {
+  format: '3DTB',
+});
+
 export default class Gallery360 extends React.Component {
+
+  outputText() {
+
+      console.log("Yo bro");
+  }
+
   render() {
     return (
       <View style={styles.panel}>
-          <Image source = {asset('AI_Guy.jpg')} style={styles.panel}/>
+          <VrButton onClick={this.outputText} style={styles.panel}>
+            <Image source={asset('renascent-inc-experts-in-demolition.gif')} style={styles.panel}/>
+          </VrButton>
       </View>
     );
   }
@@ -35,6 +50,18 @@ const styles = StyleSheet.create({
   },
   greeting: {
     fontSize: 30,
+  },
+  button: {
+    backgroundColor: '#c0c0d0',
+    borderRadius: 5,
+    width: 40,
+    height: 44,
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: '#000000',
+    fontSize: 30,
+    fontWeight: 'bold',
   },
 });
 
