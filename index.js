@@ -5,17 +5,42 @@ import {
   Text,
   View,
   Image,
-  asset
+  asset,
+  Environment,
+  VrButton,
+  console,
 } from 'react-360';
 
+
+Environment.setBackgroundImage(asset('Renascent2.jpg'), {
+  format: '3DTB',
+});
+
+
+
 export default class Gallery360 extends React.Component {
+
+
   render() {
     return (
-      <View style={styles.panel}>
-          <Image source = {asset('AI_Guy.jpg')} style={styles.panel}/>
+      <View id="theView" style={styles.panel}>
+          <VrButton onClick={this.changeImage} style={styles.panel}>
+            <Image source={asset('renascent-inc-experts-in-demolition.jpg')}  style={styles.panel}/>
+          </VrButton>
       </View>
     );
   }
+
+  changeImage() {
+    return (
+      window.console.log('Hey man'),
+      //I need a way to tell the DOM to update here
+      Environment.setBackgroundImage(asset('Renascent3.jpg'), {
+        format: '3DTB',
+      })
+    );
+  }
+
 };
 
 const styles = StyleSheet.create({
@@ -35,6 +60,18 @@ const styles = StyleSheet.create({
   },
   greeting: {
     fontSize: 30,
+  },
+  button: {
+    backgroundColor: '#c0c0d0',
+    borderRadius: 5,
+    width: 40,
+    height: 44,
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: '#000000',
+    fontSize: 30,
+    fontWeight: 'bold',
   },
 });
 
