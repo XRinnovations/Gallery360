@@ -11,9 +11,8 @@ import {
   console,
 } from 'react-360';
 
-backgroundImage = 'Renascent2.jpg';
 
-Environment.setBackgroundImage(asset(this.backgroundImage), {
+Environment.setBackgroundImage(asset('Renascent2.jpg'), {
   format: '3DTB',
 });
 
@@ -34,10 +33,11 @@ export default class Gallery360 extends React.Component {
 
   changeImage() {
     return (
-      backgroundImage = 'Renascent3.jpg',
-      window.console.log('Hey man')
+      window.console.log('Hey man'),
       //I need a way to tell the DOM to update here
-      
+      Environment.setBackgroundImage(asset('Renascent3.jpg'), {
+        format: '3DTB',
+      })
     );
   }
 
