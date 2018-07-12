@@ -11,26 +11,36 @@ import {
   console,
 } from 'react-360';
 
-Environment.setBackgroundImage(asset('Renascent2.jpg'), {
+backgroundImage = 'Renascent2.jpg';
+
+Environment.setBackgroundImage(asset(this.backgroundImage), {
   format: '3DTB',
 });
 
+
+
 export default class Gallery360 extends React.Component {
 
-  outputText() {
-
-      console.log("Yo bro");
-  }
 
   render() {
     return (
-      <View style={styles.panel}>
-          <VrButton onClick={this.outputText} style={styles.panel}>
-            <Image source={asset('renascent-inc-experts-in-demolition.gif')} style={styles.panel}/>
+      <View id="theView" style={styles.panel}>
+          <VrButton onClick={this.changeImage} style={styles.panel}>
+            <Image source={asset('renascent-inc-experts-in-demolition.jpg')}  style={styles.panel}/>
           </VrButton>
       </View>
     );
   }
+
+  changeImage() {
+    return (
+      backgroundImage = 'Renascent3.jpg',
+      window.console.log('Hey man')
+      //I need a way to tell the DOM to update here
+      
+    );
+  }
+
 };
 
 const styles = StyleSheet.create({
