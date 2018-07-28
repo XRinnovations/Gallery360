@@ -16,30 +16,41 @@ Environment.setBackgroundImage(asset('Renascent2.jpg'), {
   format: '3DTB',
 });
 
+var pictureArray = ['360_world.jpg', 'RedRockBridge.jpg', 'Renascent2.jpg', 'Renascent3.jpg'];
 
+// Add incrementer counter
+_incrementCount = function() {
+  window.console.log("Inside _incrementCount method!");
+  this.setState({count: this.state.count + 1});
+};
 
 export default class Gallery360 extends React.Component {
-
 
   render() {
     return (
       <View id="theView" style={styles.panel}>
-          <VrButton onClick={this.changeImage} style={styles.panel}>
-            <Image source={asset('renascent-inc-experts-in-demolition.jpg')}  style={styles.panel}/>
+          <VrButton onClick={this.changeImage()} style={styles.panel}>
+            <Image source={asset('renascent-inc-experts-in-demolition.jpg')} style={styles.panel}/>
           </VrButton>
       </View>
     );
   }
 
-  changeImage() {
+  // set the state
+  state = {
+    count: 2,
+  };
+
+  changeImage = function(){
+    this._incrementCount;
     return (
-      window.console.log('Hey man'),
+      window.console.log('Hey man', this.state.count),
       //I need a way to tell the DOM to update here
-      Environment.setBackgroundImage(asset('Renascent3.jpg'), {
+      Environment.setBackgroundImage(asset(pictureArray[this.state.count]), {
         format: '3DTB',
       })
     );
-  }
+  };
 
 };
 
