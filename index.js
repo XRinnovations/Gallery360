@@ -27,6 +27,7 @@ _incrementCount = function() {
 export default class Gallery360 extends React.Component {
 
   render() {
+    window.console.log("Right inside the render method!!");
     return (
       <View id="theView" style={styles.panel}>
           <VrButton onClick={this.changeImage()} style={styles.panel}>
@@ -44,7 +45,6 @@ export default class Gallery360 extends React.Component {
   changeImage = function(){
     this._incrementCount;
     return (
-      window.console.log('Hey man', this.state.count),
       //I need a way to tell the DOM to update here
       Environment.setBackgroundImage(asset(pictureArray[this.state.count]), {
         format: '3DTB',
@@ -56,7 +56,6 @@ export default class Gallery360 extends React.Component {
 
 const styles = StyleSheet.create({
   panel: {
-    // Fill the entire surface
     width: 1000,
     height: 600,
     backgroundColor: 'rgba(255, 255, 255, 0.4)',
