@@ -16,46 +16,46 @@ Environment.setBackgroundImage(asset('Renascent2.jpg'), {
   format: '3DTB',
 });
 
-var pictureArray = ['360_world.jpg', 'RedRockBridge.jpg', 'Renascent2.jpg', 'Renascent3.jpg'];
-
-// Add incrementer counter
-_incrementCount = function() {
-  window.console.log("Inside _incrementCount method!");
-  this.setState({count: this.state.count + 1});
-};
 
 export default class Gallery360 extends React.Component {
 
-  render() {
-    window.console.log("Right inside the render method!!");
-    return (
-      <View id="theView" style={styles.panel}>
-          <VrButton onClick={this.changeImage()} style={styles.panel}>
-            <Image source={asset('renascent-inc-experts-in-demolition.jpg')} style={styles.panel}/>
-          </VrButton>
-      </View>
-    );
+
+  constructor() {
+    super();
+
+    this.state = {
+      count: 0,
+    };
+
+    this.pictureArray = ['360_world.jpg', 'RedRockBridge.jpg', 'Renascent2.jpg', 'Renascent3.jpg'];
+
   }
 
-  // set the state
-  state = {
-    count: 2,
-  };
-
-  changeImage = function(){
-    this._incrementCount;
+  changeImage() {
+    this.setState({count: (this.state.count + 1) % this.pictureArray.length});
+    window.console.log('Hey man: ', this.state.count);
     return (
       //I need a way to tell the DOM to update here
-      Environment.setBackgroundImage(asset(pictureArray[this.state.count]), {
+      Environment.setBackgroundImage(asset(this.pictureArray[this.state.count]), {
         format: '3DTB',
       })
     );
   };
 
+  render() {
+    return (
+      <View id="theView" style={styles.panel}>
+          <VrButton onClick={() => this.changeImage()} style={styles.panel}>
+            <Image source={asset('renascent-inc-experts-in-demolition.jpg')}  style={styles.panel}/>
+          </VrButton>
+      </View>
+    );
+  }
 };
 
 const styles = StyleSheet.create({
   panel: {
+    // Fill the entire surface
     width: 1000,
     height: 600,
     backgroundColor: 'rgba(255, 255, 255, 0.4)',
