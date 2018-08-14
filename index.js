@@ -17,30 +17,38 @@ Environment.setBackgroundImage(asset('Renascent2.jpg'), {
 });
 
 
-
 export default class Gallery360 extends React.Component {
 
+  constructor() {
+    super();
 
-  render() {
-    return (
-      <View id="theView" style={styles.panel}>
-          <VrButton onClick={this.changeImage} style={styles.panel}>
-            <Image source={asset('renascent-inc-experts-in-demolition.jpg')}  style={styles.panel}/>
-          </VrButton>
-      </View>
-    );
+    this.state = {
+      count: 0,
+    };
+
+    this.pictureArray = ['360_world.jpg', 'RedRockBridge.jpg', 'Renascent2.jpg', 'Renascent3.jpg'];
+
   }
 
   changeImage() {
+    this.setState({count: (this.state.count + 1) % this.pictureArray.length});
     return (
-      window.console.log('Hey man'),
       //I need a way to tell the DOM to update here
-      Environment.setBackgroundImage(asset('Renascent3.jpg'), {
+      Environment.setBackgroundImage(asset(this.pictureArray[this.state.count]), {
         format: '3DTB',
       })
     );
   }
 
+  render() {
+    return (
+      <View id="theView" style={styles.panel}>
+          <VrButton onClick={() => this.changeImage()} style={styles.panel}>
+            <Image source={asset('renascent-inc-experts-in-demolition.jpg')}  style={styles.panel}/>
+          </VrButton>
+      </View>
+    );
+  }
 };
 
 const styles = StyleSheet.create({
