@@ -19,7 +19,6 @@ Environment.setBackgroundImage(asset('Renascent2.jpg'), {
 
 export default class Gallery360 extends React.Component {
 
-
   constructor() {
     super();
 
@@ -33,14 +32,13 @@ export default class Gallery360 extends React.Component {
 
   changeImage() {
     this.setState({count: (this.state.count + 1) % this.pictureArray.length});
-    window.console.log('Hey man: ', this.state.count);
     return (
       //I need a way to tell the DOM to update here
       Environment.setBackgroundImage(asset(this.pictureArray[this.state.count]), {
         format: '3DTB',
       })
     );
-  };
+  }
 
   render() {
     return (
